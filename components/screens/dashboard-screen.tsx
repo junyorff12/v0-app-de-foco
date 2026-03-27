@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Play, Flame, Trophy, BarChart3, Settings, User, Zap, Clock, Target, Plus, X, CheckCircle2 } from 'lucide-react'
+import { Play, Flame, Trophy, BarChart3, Settings, User, Zap, Clock, Target, Plus, X, CheckCircle2, LayoutGrid } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { useApp } from '@/lib/app-context'
 import { mockSessions } from '@/lib/mock-data'
+import { InspirationalQuoteCard } from '@/components/inspirational-quote-card'
 
 interface Task {
   id: string
@@ -79,6 +80,11 @@ export function DashboardScreen() {
         </div>
       </div>
 
+      {/* Inspirational Quote */}
+      <div className="px-6 pb-4">
+        <InspirationalQuoteCard compact />
+      </div>
+
       {/* Level Card */}
       <div className="px-6 pb-6">
         <Card className="bg-primary p-5">
@@ -129,8 +135,8 @@ export function DashboardScreen() {
 
       {/* Start Focus Button */}
       <div className="px-6 pb-6">
-        <Button 
-          size="lg" 
+        <Button
+          size="lg"
           className="h-16 w-full gap-3 text-lg"
           onClick={() => setCurrentScreen('focus-setup')}
         >
@@ -143,15 +149,26 @@ export function DashboardScreen() {
       <div className="px-6 pb-6">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="font-semibold text-foreground">Minhas Tarefas</h3>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="h-8 gap-1.5"
-            onClick={() => setShowAddTask(true)}
-          >
-            <Plus className="h-4 w-4" />
-            Nova Tarefa
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="h-8 gap-1.5"
+              onClick={() => setCurrentScreen('kanban')}
+            >
+              <LayoutGrid className="h-4 w-4" />
+              Kanban
+            </Button>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="h-8 gap-1.5"
+              onClick={() => setShowAddTask(true)}
+            >
+              <Plus className="h-4 w-4" />
+              Nova Tarefa
+            </Button>
+          </div>
         </div>
 
         {/* Add Task Input */}

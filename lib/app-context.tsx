@@ -19,6 +19,7 @@ type Screen =
   | 'profile'
   | 'settings'
   | 'blocked-apps'
+  | 'kanban'
 
 interface AppContextType {
   currentScreen: Screen

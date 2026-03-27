@@ -15,6 +15,7 @@ import { StatsScreen } from './screens/stats-screen'
 import { ProfileScreen } from './screens/profile-screen'
 import { SettingsScreen } from './screens/settings-screen'
 import { BlockedAppsScreen } from './screens/blocked-apps-screen'
+import { KanbanScreen } from './screens/kanban-screen'
 
 export function AppNavigator() {
   const { currentScreen } = useApp()
@@ -34,6 +35,7 @@ export function AppNavigator() {
     profile: ProfileScreen,
     settings: SettingsScreen,
     'blocked-apps': BlockedAppsScreen,
+    kanban: KanbanScreen,
   }
 
   const Screen = screens[currentScreen] || SplashScreen
