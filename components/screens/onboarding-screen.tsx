@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Brain, Target, Trophy, Shield, ArrowRight, ArrowLeft } from 'lucide-react'
+import { Brain, Target, Trophy, Shield, ArrowRight, ArrowLeft, MessageCircleHeart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useApp } from '@/lib/app-context'
 
@@ -23,6 +23,12 @@ const slides = [
     title: 'Bloqueio Inteligente',
     description: 'Controle de interrupções que bloqueia apps e notificações durante suas sessões de foco.',
     color: 'bg-chart-3',
+  },
+  {
+    icon: MessageCircleHeart,
+    title: 'Mensagens de Incentivo',
+    description: 'Receba frases motivacionais de grandes pensadores e versículos bíblicos para inspirar sua jornada de estudos.',
+    color: 'bg-chart-5',
   },
   {
     icon: Target,
