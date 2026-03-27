@@ -2,8 +2,8 @@ import type { User, Achievement, FocusSession, DailyStats, AppSettings } from '.
 
 export const mockUser: User = {
   id: '1',
-  name: 'Maria Silva',
-  email: 'maria@email.com',
+  name: 'Antonio Silva',
+  email: 'antonio@email.com',
   level: 12,
   xp: 2450,
   xpToNextLevel: 3000,
