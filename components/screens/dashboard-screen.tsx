@@ -5,6 +5,12 @@ import { Play, Flame, Trophy, BarChart3, Settings, User, Zap, Clock, Target, Plu
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { useApp } from '@/lib/app-context'
 import { mockSessions } from '@/lib/mock-data'
 import { InspirationalQuoteCard } from '@/components/inspirational-quote-card'
@@ -115,23 +121,46 @@ export function DashboardScreen() {
       </div>
 
       {/* Quick Stats */}
-      <div className="grid grid-cols-3 gap-3 px-6 pb-6">
-        <Card className="flex flex-col items-center p-4">
-          <Clock className="mb-2 h-5 w-5 text-chart-1" />
-          <span className="text-xl font-bold text-foreground">{todayMinutes}</span>
-          <span className="text-xs text-muted-foreground">min hoje</span>
-        </Card>
-        <Card className="flex flex-col items-center p-4">
-          <Target className="mb-2 h-5 w-5 text-chart-2" />
-          <span className="text-xl font-bold text-foreground">{todaySessions}</span>
-          <span className="text-xs text-muted-foreground">sessões</span>
-        </Card>
-        <Card className="flex flex-col items-center p-4">
-          <Flame className="mb-2 h-5 w-5 text-accent" />
-          <span className="text-xl font-bold text-foreground">{user.streak}</span>
-          <span className="text-xs text-muted-foreground">dias</span>
-        </Card>
-      </div>
+      <TooltipProvider delayDuration={300}>
+        <div className="grid grid-cols-3 gap-2 px-6 pb-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Card className="flex flex-col items-center p-2 cursor-pointer hover:bg-muted/50 transition-colors">
+                <Clock className="mb-1 h-4 w-4 text-chart-1" />
+                <span className="text-base font-bold text-foreground">{todayMinutes}</span>
+                <span className="text-[10px] text-muted-foreground">min hoje</span>
+              </Card>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs">
+              <p>Minutos de foco acumulados hoje</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Card className="flex flex-col items-center p-2 cursor-pointer hover:bg-muted/50 transition-colors">
+                <Target className="mb-1 h-4 w-4 text-chart-2" />
+                <span className="text-base font-bold text-foreground">{todaySessions}</span>
+                <span className="text-[10px] text-muted-foreground">sessões</span>
+              </Card>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs">
+              <p>Total de sessões de estudo hoje</p>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Card className="flex flex-col items-center p-2 cursor-pointer hover:bg-muted/50 transition-colors">
+                <Flame className="mb-1 h-4 w-4 text-accent" />
+                <span className="text-base font-bold text-foreground">{user.streak}</span>
+                <span className="text-[10px] text-muted-foreground">dias</span>
+              </Card>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" className="text-xs">
+              <p>Sequência de dias consecutivos estudando</p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
+      </TooltipProvider>
 
       {/* Start Focus Button */}
       <div className="px-6 pb-6">

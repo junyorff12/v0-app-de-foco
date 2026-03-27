@@ -1,15 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Quote, RefreshCw, BookOpen } from 'lucide-react'
+import { Quote, RefreshCw, Lightbulb } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
 interface InspirationQuote {
   text: string
   author: string
-  type: 'philosopher' | 'biblical'
-  reference?: string
+  type: 'philosopher' | 'entrepreneur'
 }
 
 const inspirationQuotes: InspirationQuote[] = [
@@ -22,11 +21,6 @@ const inspirationQuotes: InspirationQuote[] = [
   {
     text: "A disciplina é a ponte entre metas e conquistas.",
     author: "Jim Rohn",
-    type: "philosopher"
-  },
-  {
-    text: "O único modo de fazer um excelente trabalho é amar o que você faz.",
-    author: "Steve Jobs",
     type: "philosopher"
   },
   {
@@ -64,66 +58,111 @@ const inspirationQuotes: InspirationQuote[] = [
     author: "Jean-Paul Sartre",
     type: "philosopher"
   },
-  // Frases Bíblicas
   {
-    text: "Tudo posso naquele que me fortalece.",
-    author: "Filipenses 4:13",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Saber não é suficiente; precisamos aplicar. Querer não é suficiente; precisamos fazer.",
+    author: "Johann Goethe",
+    type: "philosopher"
+  },
+  // Empreendedores
+  {
+    text: "O único modo de fazer um excelente trabalho é amar o que você faz.",
+    author: "Steve Jobs",
+    type: "entrepreneur"
   },
   {
-    text: "Porque sou eu que conheço os planos que tenho para vocês, planos de fazê-los prosperar e não de causar dano, planos de dar a vocês esperança e um futuro.",
-    author: "Jeremias 29:11",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "O sucesso não é o final, o fracasso não é fatal: é a coragem de continuar que conta.",
+    author: "Winston Churchill",
+    type: "entrepreneur"
   },
   {
-    text: "Não te mandei eu? Sê forte e corajoso; não temas, nem te espantes, porque o Senhor, teu Deus, é contigo por onde quer que andares.",
-    author: "Josué 1:9",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Não tenha medo de desistir do bom para perseguir o ótimo.",
+    author: "John D. Rockefeller",
+    type: "entrepreneur"
   },
   {
-    text: "Mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão e não se cansarão; caminharão e não se fatigarão.",
-    author: "Isaías 40:31",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "A única maneira de fazer um trabalho excelente é amar o que você faz.",
+    author: "Steve Jobs",
+    type: "entrepreneur"
   },
   {
-    text: "Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.",
-    author: "Salmos 37:5",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Se você não está disposto a arriscar o usual, terá que se contentar com o ordinário.",
+    author: "Jim Rohn",
+    type: "entrepreneur"
   },
   {
-    text: "Não fui eu que ordenei a você? Seja forte e corajoso! Não se apavore nem desanime, pois o Senhor, o seu Deus, estará com você por onde você andar.",
-    author: "Josué 1:9",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "O fracasso é simplesmente a oportunidade de começar de novo, desta vez de forma mais inteligente.",
+    author: "Henry Ford",
+    type: "entrepreneur"
   },
   {
-    text: "O coração do homem pode fazer planos, mas a resposta certa dos lábios vem do Senhor.",
-    author: "Provérbios 16:1",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Seu tempo é limitado, não o desperdice vivendo a vida de outra pessoa.",
+    author: "Steve Jobs",
+    type: "entrepreneur"
   },
   {
-    text: "Confie no Senhor de todo o seu coração e não se apoie em seu próprio entendimento.",
-    author: "Provérbios 3:5",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "A inovação distingue um líder de um seguidor.",
+    author: "Steve Jobs",
+    type: "entrepreneur"
   },
   {
-    text: "Peçam, e lhes será dado; busquem, e encontrarão; batam, e a porta lhes será aberta.",
-    author: "Mateus 7:7",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Trabalhe como se você não precisasse do dinheiro. Ame como se você nunca tivesse sido magoado.",
+    author: "Mark Twain",
+    type: "entrepreneur"
   },
   {
-    text: "E sabemos que todas as coisas contribuem juntamente para o bem daqueles que amam a Deus.",
-    author: "Romanos 8:28",
-    type: "biblical",
-    reference: "Bíblia Sagrada"
+    text: "Não espere. O tempo nunca será perfeito.",
+    author: "Napoleon Hill",
+    type: "entrepreneur"
+  },
+  {
+    text: "O pessimista vê dificuldade em cada oportunidade. O otimista vê oportunidade em cada dificuldade.",
+    author: "Winston Churchill",
+    type: "entrepreneur"
+  },
+  {
+    text: "A melhor maneira de prever o futuro é criá-lo.",
+    author: "Peter Drucker",
+    type: "entrepreneur"
+  },
+  {
+    text: "Você não constrói um negócio. Você constrói pessoas, e então pessoas constroem o negócio.",
+    author: "Zig Ziglar",
+    type: "entrepreneur"
+  },
+  {
+    text: "Se você pode sonhar, você pode fazer.",
+    author: "Walt Disney",
+    type: "entrepreneur"
+  },
+  {
+    text: "O segredo do sucesso é fazer o que outros não querem fazer.",
+    author: "Mark Cuban",
+    type: "entrepreneur"
+  },
+  {
+    text: "Não importa quantas vezes você falhe. Você só precisa estar certo uma vez.",
+    author: "Mark Cuban",
+    type: "entrepreneur"
+  },
+  {
+    text: "As oportunidades não acontecem. Você as cria.",
+    author: "Chris Grosser",
+    type: "entrepreneur"
+  },
+  {
+    text: "O risco vem de não saber o que você está fazendo.",
+    author: "Warren Buffett",
+    type: "entrepreneur"
+  },
+  {
+    text: "Grandes coisas nos negócios nunca são feitas por uma pessoa. São feitas por uma equipe.",
+    author: "Steve Jobs",
+    type: "entrepreneur"
+  },
+  {
+    text: "Não se preocupe com o fracasso; você só precisa estar certo uma vez.",
+    author: "Drew Houston",
+    type: "entrepreneur"
   }
 ]
 
@@ -155,8 +194,8 @@ export function InspirationalQuoteCard({ compact = false }: InspirationalQuoteCa
   return (
     <Card className={`relative overflow-hidden border-none bg-gradient-to-br from-primary/10 via-primary/5 to-accent/10 ${compact ? 'p-4' : 'p-5'}`}>
       <div className="absolute -right-4 -top-4 opacity-10">
-        {currentQuote.type === 'biblical' ? (
-          <BookOpen className={`${compact ? 'h-16 w-16' : 'h-24 w-24'} text-primary`} />
+        {currentQuote.type === 'entrepreneur' ? (
+          <Lightbulb className={`${compact ? 'h-16 w-16' : 'h-24 w-24'} text-primary`} />
         ) : (
           <Quote className={`${compact ? 'h-16 w-16' : 'h-24 w-24'} text-primary`} />
         )}
@@ -165,14 +204,14 @@ export function InspirationalQuoteCard({ compact = false }: InspirationalQuoteCa
       <div className="relative">
         <div className="mb-2 flex items-center gap-2">
           <div className={`flex h-6 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium ${
-            currentQuote.type === 'biblical' 
+            currentQuote.type === 'entrepreneur' 
               ? 'bg-accent/20 text-accent-foreground' 
               : 'bg-primary/20 text-primary'
           }`}>
-            {currentQuote.type === 'biblical' ? (
+            {currentQuote.type === 'entrepreneur' ? (
               <>
-                <BookOpen className="h-3 w-3" />
-                Sabedoria Bíblica
+                <Lightbulb className="h-3 w-3" />
+                Empreendedor
               </>
             ) : (
               <>
@@ -192,9 +231,6 @@ export function InspirationalQuoteCard({ compact = false }: InspirationalQuoteCa
             <p className={`font-semibold text-primary ${compact ? 'text-xs' : 'text-sm'}`}>
               {currentQuote.author}
             </p>
-            {currentQuote.reference && (
-              <p className="text-xs text-muted-foreground">{currentQuote.reference}</p>
-            )}
           </div>
           
           <Button 
