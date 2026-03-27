@@ -25,7 +25,7 @@ export function SplashScreen() {
             FocusFlow
           </h1>
           <p className="text-primary-foreground/80">
-            Seu aliado contra distrações
+            Foque no que realmente é importante
           </p>
         </div>
       </div>
