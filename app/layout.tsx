@@ -7,7 +7,7 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'FocusFlow - Seu aliado contra distrações',
+  title: 'FocusFlow - Foque no que realmente importa pra você',
   description: 'Aplicativo de foco guiado com técnicas de estudo, recompensas gamificadas e controle inteligente de interrupções',
   generator: 'v0.app',
   icons: {
