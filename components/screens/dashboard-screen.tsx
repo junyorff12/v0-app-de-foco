@@ -127,7 +127,7 @@ export function DashboardScreen() {
         </Card>
       </div>
 
-      {Start Focus Button */}
+      {/* Start Focus Button */}
       <div className="px-6 pb-6">
         <Button 
           size="lg" 
